@@ -1,9 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>1.0.0</Version>
+		<Authors>Sergi Ortiz Gomez</Authors>
+		<Company>DrUalcman</Company>
+		<Description>This library provides extensions to easily configure JWT Bearer Authentication in your ASP.NET Core applications.</Description>
+		<Copyright>Free</Copyright>
+		<PackageTags>webapi;netcore;netcore webapi;bearer;api security;security;webapi bearer;jwt;jwt bearer</PackageTags>
+		<PackageId>WebApiTools.Authentication.Bearer</PackageId>
+		<Product>WebApiTools.Authentication.Bearer</Product>
+		<PackageReleaseNotes>First release.</PackageReleaseNotes>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/drualcman/WebApiTools.Authentication.Bearer</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/drualcman/WebApiTools.Authentication.Bearer</PackageProjectUrl>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.8" />
+	</ItemGroup>
 </Project>
