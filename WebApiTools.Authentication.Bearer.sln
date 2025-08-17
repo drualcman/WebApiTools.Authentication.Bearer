@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiTools.Authentication.Bearer", "WebApiTools.Authentication.Bearer\WebApiTools.Authentication.Bearer.csproj", "{A3ADDF9C-B097-4882-B030-FC53C38B81F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3ADDF9C-B097-4882-B030-FC53C38B81F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3ADDF9C-B097-4882-B030-FC53C38B81F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3ADDF9C-B097-4882-B030-FC53C38B81F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3ADDF9C-B097-4882-B030-FC53C38B81F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29D480F4-6582-4F66-92F6-40E66CC4A41B}
+	EndGlobalSection
+EndGlobal
