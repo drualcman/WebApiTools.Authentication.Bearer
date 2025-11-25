@@ -12,19 +12,5 @@ public class JwtOptions
     public bool ValidateAudience { get; set; } = true;
     public bool ValidateLifetime { get; set; } = true;
     public bool ValidateIssuerSigningKey { get; set; } = true;
-
-    internal TokenValidationParameters ToTokenValidationParameters()
-    {
-        return new TokenValidationParameters
-        {
-            ValidateIssuer = ValidateIssuer,
-            ValidateAudience = ValidateAudience,
-            ValidateLifetime = ValidateLifetime,
-            ValidateIssuerSigningKey = ValidateIssuerSigningKey,
-            ValidIssuer = Issuer,
-            ValidAudience = Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey))
-        };
-    }
 }
 

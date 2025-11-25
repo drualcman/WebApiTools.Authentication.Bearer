@@ -1,4 +1,5 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection;
+
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
