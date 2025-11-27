@@ -8,7 +8,7 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, Action<JwtOptions> configuration)
+    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, Action<JwtOptions> configuration, JwtEvents events = null)
     {
         services.Configure(configuration);
         services.AddAuthentication("Bearer")
@@ -17,6 +17,8 @@ public static class ServiceCollectionExtensions
                 JwtOptions jwtOptions = new();
                 configuration(jwtOptions);
                 options.TokenValidationParameters = jwtOptions.ToTokenValidationParameters();
+                if (events is not null)
+                    options.Events = EventsHelper.Create(events);
             });
         services.AddAuthorization();
         return services;
