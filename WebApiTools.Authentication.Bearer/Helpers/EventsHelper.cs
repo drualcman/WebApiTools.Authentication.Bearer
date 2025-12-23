@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-
-namespace WebApiTools.Authentication.Bearer.Helpers;
+﻿namespace WebApiTools.Authentication.Bearer.Helpers;
 
 internal static class EventsHelper
 {

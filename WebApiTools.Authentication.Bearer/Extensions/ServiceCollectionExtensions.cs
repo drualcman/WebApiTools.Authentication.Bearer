@@ -2,9 +2,9 @@
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration, JwtEvents events = null)
     {
-        services.AddJwtAuthentication(options => configuration.GetSection(JwtOptions.SectionKey).Bind(options));
+        services.AddJwtAuthentication(options => configuration.GetSection(JwtOptions.SectionKey).Bind(options), events);
         return services;
     }
 

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-
-namespace WebApiTools.Authentication.Bearer.Options;
+﻿namespace WebApiTools.Authentication.Bearer.Options;
 
 public class JwtEvents
 {
