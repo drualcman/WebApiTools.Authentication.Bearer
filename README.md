@@ -152,14 +152,39 @@ app.UseHttpsRedirection();
 
 ## Available Extension Methods
 ```csharp
+// From builder simple
+builder.AddJwtAuthentication();
+
+// From builder custom events
+builder.AddJwtAuthentication(JwtEvents events);
+
+// custom configuration
 // From IConfiguration
 builder.Services.AddJwtAuthentication(IConfiguration configuration);
+
+// With custom events
+builder.Services.AddJwtAuthentication(JwtEvents events);
+
+// With custom Authorization options
+builder.Services.AddJwtAuthentication(Action<AuthorizationOptions> options);
 
 // With manual options configuration
 builder.Services.AddJwtAuthentication(Action<JwtOptions> configuration);
 
-// With custom events
+// With manual options configuration and authorization options
+builder.Services.AddJwtAuthentication(Action<JwtOptions> configuration, Action<AuthorizationOptions> options);
+
+// With manual options configuration and events
 builder.Services.AddJwtAuthentication(Action<JwtOptions> configuration, JwtEvents events);
+
+// With manual options configuration, authorization options and events
+builder.Services.AddJwtAuthentication(Action<JwtOptions> configuration, Action<AuthorizationOptions> options, JwtEvents events);
+
+// using authentication
+...
+app.UseJwtAuthentication();
+...
+app.MapGet("", () => Results.Ok("Hello world!")).RequireAuthorization();
 ```
 
 ## Best Practices
@@ -189,5 +214,7 @@ builder.Services.AddJwtAuthentication(Action<JwtOptions> configuration, JwtEvent
 ### Dependencies
 
 - Microsoft.AspNetCore.Authentication.JwtBearer
-- Microsoft.IdentityModel.Tokens
-- System.IdentityModel.Tokens.Jwt
+
+## Contributing
+
+If you encounter issues or have suggestions for improvements, please submit an issue or pull request to the repository hosting this library.

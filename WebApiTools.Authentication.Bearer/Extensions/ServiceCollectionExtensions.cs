@@ -1,16 +1,25 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection;
 
-public static class ServiceCollectionExtensions
+public static partial class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration, JwtEvents events = null)
+    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services)
     {
-        services.AddJwtAuthentication(options => configuration.GetSection(JwtOptions.SectionKey).Bind(options), events);
+        services.AddJwtAuthentication(null, null, null);
         return services;
     }
 
-    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, Action<JwtOptions> configuration, JwtEvents events = null)
+    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services,
+        Action<JwtOptions> configuration,
+        Action<AuthorizationOptions> authOptions,
+        JwtEvents events)
     {
-        services.Configure(configuration);
+        if (configuration is not null)
+            services.Configure(configuration);
+        else
+            services
+                .AddOptions<JwtOptions>()
+                .BindConfiguration(JwtOptions.SectionKey);
+
         services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
@@ -20,7 +29,10 @@ public static class ServiceCollectionExtensions
                 if (events is not null)
                     options.Events = EventsHelper.Create(events);
             });
-        services.AddAuthorization();
+        if (authOptions is not null)
+            services.AddAuthorization(authOptions);
+        else
+            services.AddAuthorization();
         return services;
     }
 }
