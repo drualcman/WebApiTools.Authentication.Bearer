@@ -13,26 +13,31 @@ public static partial class ServiceCollectionExtensions
         Action<AuthorizationOptions> authOptions,
         JwtEvents events)
     {
-        if (configuration is not null)
-            services.Configure(configuration);
-        else
-            services
-                .AddOptions<JwtOptions>()
-                .BindConfiguration(JwtOptions.SectionKey);
+        Action<JwtOptions> jwtConfiguration = configuration ??
+            (options => services
+            .AddOptions<JwtOptions>()
+            .BindConfiguration(JwtOptions.SectionKey));
+
+        services.Configure(jwtConfiguration);
 
         services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
                 JwtOptions jwtOptions = new();
-                configuration(jwtOptions);
+                jwtConfiguration(jwtOptions);
                 options.TokenValidationParameters = jwtOptions.ToTokenValidationParameters();
                 if (events is not null)
-                    options.Events = EventsHelper.Create(events);
+                {
+                    options.Events ??= new JwtBearerEvents();
+                    EventsHelper.ApplyTo(options.Events, events);
+                }
             });
+
         if (authOptions is not null)
             services.AddAuthorization(authOptions);
         else
             services.AddAuthorization();
+
         return services;
     }
 }

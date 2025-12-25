@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>1.1.3</Version>
+		<Version>1.1.4</Version>
 		<Authors>Sergi Ortiz Gomez</Authors>
 		<Company>DrUalcman</Company>
 		<Description>This library provides extensions to easily configure JWT Bearer Authentication in your ASP.NET Core applications.</Description>
@@ -10,7 +10,7 @@
 		<PackageTags>webapi;netcore;netcore webapi;bearer;api security;security;webapi bearer;jwt;jwt bearer</PackageTags>
 		<PackageId>WebApiTools.Authentication.Bearer</PackageId>
 		<Product>WebApiTools.Authentication.Bearer</Product>
-		<PackageReleaseNotes>Update all extensions methods to have new JwtEvents parameter. Update documentation. Update dependencies.</PackageReleaseNotes>
+		<PackageReleaseNotes>Fixed events to keep default actions if not overwrite. Add more overwrites when use WebApplicationBuilder. Update documentation. Update dependencies.</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/drualcman/WebApiTools.Authentication.Bearer</RepositoryUrl>

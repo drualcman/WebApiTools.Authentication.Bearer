@@ -2,30 +2,23 @@
 
 internal static class EventsHelper
 {
-    public static JwtBearerEvents Create(
-        JwtEvents eventsConfig)
+    public static JwtBearerEvents ApplyTo(JwtBearerEvents targetEvents, JwtEvents eventsConfig)
     {
-        return new JwtBearerEvents
-        {
-            OnMessageReceived = eventsConfig?.OnMessageReceived != null
-                ? eventsConfig.OnMessageReceived
-                : null,
+        if (eventsConfig?.OnMessageReceived != null)
+            targetEvents.OnMessageReceived = eventsConfig.OnMessageReceived;
 
-            OnAuthenticationFailed = eventsConfig?.OnAuthenticationFailed != null
-                ? eventsConfig.OnAuthenticationFailed
-                : null,
+        if (eventsConfig?.OnAuthenticationFailed != null)
+            targetEvents.OnAuthenticationFailed = eventsConfig.OnAuthenticationFailed;
 
-            OnChallenge = eventsConfig?.OnChallenge != null
-                ? eventsConfig.OnChallenge
-                : null,
+        if (eventsConfig?.OnChallenge != null)
+            targetEvents.OnChallenge = eventsConfig.OnChallenge;
 
-            OnTokenValidated = eventsConfig?.OnTokenValidated != null
-                ? eventsConfig.OnTokenValidated
-                : null,
+        if (eventsConfig?.OnTokenValidated != null)
+            targetEvents.OnTokenValidated = eventsConfig.OnTokenValidated;
 
-            OnForbidden = eventsConfig?.OnForbidden != null
-                ? eventsConfig.OnForbidden
-                : null
-        };
+        if (eventsConfig?.OnForbidden != null)
+            targetEvents.OnForbidden = eventsConfig.OnForbidden;
+
+        return targetEvents;
     }
 }

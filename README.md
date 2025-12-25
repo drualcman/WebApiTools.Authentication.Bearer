@@ -158,6 +158,15 @@ builder.AddJwtAuthentication();
 // From builder custom events
 builder.AddJwtAuthentication(JwtEvents events);
 
+// From builder Authorization options
+builder.AddJwtAuthentication(Action<AuthorizationOptions> options);
+
+// From builder Authorization options
+builder.AddJwtAuthentication(Action<AuthorizationOptions> options);
+
+// From builder  manual options configuration
+builder.AddJwtAuthentication(Action<JwtOptions> configuration);
+
 // custom configuration
 // From IConfiguration
 builder.Services.AddJwtAuthentication(IConfiguration configuration);
